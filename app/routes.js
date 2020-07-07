@@ -18,7 +18,11 @@ module.exports = function(app, passport) {
       message: req.flash('message'),
     });
   });
-  // app.post('/signup');
+  app.post('/signup', passport.authenticate('local-signup', {
+    successRedirect: '/profile',
+    failureRedirect: '/signup',
+    failureFlash   : true,
+  }));
 
   // Profile page
   app.get('/profile', function(req, res) {

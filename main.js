@@ -10,10 +10,10 @@ const session      = require('express-session');
 const app          = express();
 const port         = process.env.PORT || 3000;
 
-const dbConfig     = require('./config/database');
+require('./config/database')(mongoose);
 
 // Passport configuration
-// require('./config/passport')(passport);
+require('./config/passport')(passport);
 
 // Setup template engine
 app.set('view engine', 'pug');
