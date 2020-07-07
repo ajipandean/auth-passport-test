@@ -29,7 +29,7 @@ module.exports = function(app, passport) {
   }));
 
   // Profile page
-  app.get('/profile', function(req, res) {
+  app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile.pug', { user: req.user });
   });
 
@@ -40,7 +40,7 @@ module.exports = function(app, passport) {
   });
 
   // Route middlewares registration
-  function isLoggedIn() {
+  function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) return next();
     res.redirect('/');
   }

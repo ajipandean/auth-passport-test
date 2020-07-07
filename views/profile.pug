@@ -1,4 +1,26 @@
 extends ./layouts/main.pug
 
 block content
-  h1 Profile
+  nav(class="navbar navbar-expand-md navbar-light bg-light shadow")
+    a(class="navbar-brand") Profile page
+    ul(class="navbar-nav ml-auto")
+      li(class="nav-item")
+        a(class="nav-link", href="/logout") Logout
+
+  div(class="container py-5")
+    div(class="row")
+      div(class="col-12 col-sm-6")
+        div(class="card")
+          div(class="card-header")
+            h5(class="card-title mb-1") Local Strategy
+          div(class="card-body")
+            div
+              p(class="mb-0")
+                strong(class="mr-2") id
+                | #{user._id}
+              p(class="mb-0")
+                strong(class="mr-2") email
+                | #{user.local.email}
+              p(class="mb-0")
+                strong(class="mr-2") password
+                | #{user.local.password}
