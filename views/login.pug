@@ -4,6 +4,8 @@ block content
   div(class="container py-5")
     div(class="row justify-content-center")
       div(class="col-sm-6")
+        if message.length > 0
+          div(class="alert alert-danger") #{message}
         div(class="card")
           div(class="card-header")
             a(class="btn btn-default btn-block", href="/") Back to home

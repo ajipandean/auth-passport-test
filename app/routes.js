@@ -10,7 +10,11 @@ module.exports = function(app, passport) {
       message: req.flash('message'),
     });
   });
-  // app.post('/login');
+  app.post('/login', passport.authenticate('local-login', {
+    successRedirect : '/profile',
+    failureRedirect : '/login',
+    failureFlash    : true,
+  }));
 
   // Signup page
   app.get('/signup', function(req, res) {
@@ -19,9 +23,9 @@ module.exports = function(app, passport) {
     });
   });
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect: '/profile',
-    failureRedirect: '/signup',
-    failureFlash   : true,
+    successRedirect : '/profile',
+    failureRedirect : '/signup',
+    failureFlash    : true,
   }));
 
   // Profile page
